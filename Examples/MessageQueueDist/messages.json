@@ -1,0 +1,12 @@
+[
+  {
+    "id": "a9f6bd11-d047-469d-8f16-89e4687cb611",
+    "text": "Some text",
+    "auth": "secret!"
+  },
+  {
+    "id": "1b9a8323-abf4-4a35-a1e7-667256dda939",
+    "text": "Yet more text",
+    "auth": "I am a hacker!"
+  }
+]

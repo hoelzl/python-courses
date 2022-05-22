@@ -1,0 +1,18 @@
+[
+  {
+    "text": "What is the value returned by a Python function if the body of the function does not contain a return statement?",
+    "answers": [
+    "There is really no good way to answer this question, since it is evidently not well posed. Asking questions like this raises concerns about the qualification of the person or persons developing this test. Furthermore, I would like to add that I have a number of philosophical concerns about multiple choice tests in general.",
+    "Nothing. The function just returns nothing.",
+    "None.",
+    "This depends on the place, where the function is defined. If it is defined at the top level of a module it returns the module init value, otherwise the default value of the surrounding context."]
+  },
+  {
+    "text": "Did you answer the previous question?",
+    "answers": [
+      "Yes",
+      "No",
+      "That's none of your business!"
+    ]
+  }
+]

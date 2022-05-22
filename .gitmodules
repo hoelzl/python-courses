@@ -1,0 +1,10 @@
+[submodule "Examples/CppBindingExample/external/pybind11"]
+	path = Examples/CppBindingExample/external/pybind11
+	url = https://github.com/pybind/pybind11.git
+	branch = stable
+[submodule "Examples/CppBindingExample/external/catch2"]
+	path = Examples/CppBindingExample/external/catch2
+	url = https://github.com/catchorg/Catch2.git
+[submodule "Examples/CppBindingExample/external/gsl"]
+	path = Examples/CppBindingExample/external/gsl
+	url = https://github.com/microsoft/GSL.git

@@ -1,0 +1,15 @@
+**/build/
+**/clion-*/
+**/out/
+**/_skbuild/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/.clion/
+*.DotSettings
+*.DotSettings.*
+**/__pycache__/
+*.egg-info
+*.pyc
+*.pyd
+MANIFEST.in

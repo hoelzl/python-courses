@@ -1,0 +1,35 @@
+name: cam-basic
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python[version='>=3.9']
+  - autopep8
+  - black
+  - cookiecutter
+  - ipykernel
+  - ipywidgets
+  - mypy
+  - jinja2
+  - jupyter
+  - jupyter_contrib_nbextensions
+  - jupytext
+  - matplotlib
+  - numba
+  - numpy
+  - openpyxl
+  - pandas
+  - papermill
+  - pip
+  - pyarrow
+  - pytest
+  - pytest-cov
+  - python-build
+  - requests
+  - rise
+  - scikit-build
+  - scikit-learn
+  - scipy
+  - seaborn
+  - typer
+  - uvicorn

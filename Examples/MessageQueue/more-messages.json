@@ -1,0 +1,27 @@
+[
+  {
+    "id": "a9f6bd11-d047-469d-8f16-89e4687cb611",
+    "text": "Some text",
+    "auth": "secret!"
+  },
+  {
+    "id": "fcc707f9-f574-4e70-94d8-4d62446a91c7",
+    "text": "Some more text",
+    "auth": "secret!"
+  },
+  {
+    "id": "1b9a8323-abf4-4a35-a1e7-667256dda939",
+    "text": "Yet more text",
+    "auth": "I am a hacker!"
+  },
+  {
+    "id": "0c7eff18-a406-4a87-a4fd-32b1b7ce9444",
+    "text": "This is an important message"
+  },
+  {
+    "id": "2a542e40-6d4e-4a7e-a52b-61f5401686ba"
+  },
+  {
+    "text": "A message without an ID."
+  }
+]
