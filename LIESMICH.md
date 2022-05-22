@@ -3,18 +3,24 @@
 Notebooks und Code für die Kurse "Einführung in Python", "Python für Programmierer",
 "Fortgeschrittenenkurs Python" und Python als Skriptsprache der Coding Akademie München.
 
+## Installation (nur einmal erforderlich)
+
 Verwenden Sie bitte den Befehl
 
 ```shell
-$ git clone --recursive https://github.com/hoelzl/python-programmierer.git
+git clone --recursive https://github.com/hoelzl/python-programmierer.git
+cd python-course
 ```
 
 zum Clonen des Repositories (Beachten Sie das Argument `--recursive`).
 
-Ein Anaconda Environment können Sie mit den Befehlen
+
+Falls Sie mit Anaconda arbeiten müssen Sie typischerweise eine PowerShell aus der Anaconda Installation verwenden; per Default ist Anaconda aus der System-PowerShell nicht verfügbar.
+
+Wenn Sie eine Anaconda PowerShell geöffnet haben können Sie ein Anaconda
+Environment, das alle für die Kurse benötigten Pakete enthält, mit den Befehlen
 
 ```shell
-cd python-programmierer
 conda env create --file cam-basic.yaml
 ```
 
@@ -49,11 +55,33 @@ pip install -r requirements.txt
 
 installieren.
 
-Zum Starten des Notebook Servers verwenden Sie das Kommando
+## Start des Notebook Servers
+
+Viele der Folien und Workshops werden als Jupyter Notebooks zur Verfügung
+gestellt. Zum Starten des Notebook Servers wechseln Sie in das `python-course`
+Verzeichnis und geben das folgende Kommando ein
 
 ```shell
 jupyter notebook
 ```
+
+## Verzeichnisstruktur
+
+- Die Kursmaterialien sind in Deutsch und Englisch verfügbar.
+  - Die englischen Materialien befinden sich im Ordner `En`.
+  - Die deutschen Materialien befinden sich im Ordner `De`.
+- Die Folien befinden sich im Unterordner `Slides`.
+- Wenn Sie beim Live-Coding mitmachen wollen, können Sie die Notizbücher im
+  Ordner `Codealong` verwenden. Dies sind die gleichen Notizbücher wie im Ordner
+  `Slides`, aber mit meist leeren Codezellen.
+- Die Workshops befinden sich im Unterordner `Workshops`.
+- Die Lösungen für alle Workshops befinden sich im Ordner `Solutions`.
+
+## Verwenden der Kursmaterialien mit VS Code oder PyCharm
+
+VS Code oder PyCharm können direkt mit jupyter notebooks arbeiten, falls Sie
+lieber eine dieser Entwicklungsumgebungen verwenden, müssen Sie keinen Jupyter
+Server starten; Sie können die Notebooks direkt in Ihrer IDE öffnen.
 
 ## Lizenz
 
