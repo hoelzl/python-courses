@@ -76,6 +76,7 @@ class FairDice(Dice):
 
 class SumDice(Dice):
     def __init__(self, dice: Iterable):
+        dice = list(dice)
         assert dice
         self.dice = dice
 
