@@ -3,7 +3,7 @@ from collections import Counter
 import pytest
 import random
 
-from dice import (
+from ..dice import (
     ConstantDice,
     FairDice,
     SumDice,
