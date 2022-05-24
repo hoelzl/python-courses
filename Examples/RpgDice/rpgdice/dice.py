@@ -2,6 +2,7 @@ import random
 import re
 from abc import ABC, abstractmethod
 from typing import Iterable
+from dataclasses import dataclass
 
 
 class Dice(ABC):
@@ -9,28 +10,22 @@ class Dice(ABC):
 
     @abstractmethod
     def roll(self) -> int:
-        raise NotImplementedError("The method roll() is not implemented.")
+        ...
 
     @property
     @abstractmethod
     def min_value(self) -> int:
-        raise NotImplementedError("The property min_value is not implemented.")
+        ...
 
     @property
     @abstractmethod
     def max_value(self) -> int:
-        raise NotImplementedError("The property max_value is not implemented.")
+        ...
 
 
+@dataclass
 class ConstantDice(Dice):
-    def __init__(self, value):
-        self.value = value
-
-    def __eq__(self, other):
-        if isinstance(other, ConstantDice):
-            return self.value == other.value
-        else:
-            return False
+    value: int
 
     def roll(self) -> int:
         return self.value
@@ -43,20 +38,14 @@ class ConstantDice(Dice):
     def max_value(self) -> int:
         return self.value
 
-
+@dataclass
 class FairDice(Dice):
-    def __init__(self, num_dice, num_sides):
-        assert num_dice >= 1
-        assert num_sides >= 2
+    num_dice: int
+    num_sides: int
 
-        self.num_dice = num_dice
-        self.num_sides = num_sides
-
-    def __eq__(self, other):
-        if isinstance(other, FairDice):
-            return self.num_dice == other.num_dice and self.num_sides == other.num_sides
-        else:
-            return False
+    def __post_init__(self):
+        assert self.num_dice >= 1
+        assert self.num_sides >= 2
 
     def roll(self) -> int:
         result = 0
@@ -73,17 +62,9 @@ class FairDice(Dice):
         return self.num_sides * self.num_dice
 
 
+@dataclass
 class SumDice(Dice):
-    def __init__(self, dice: Iterable):
-        dice = list(dice)
-        assert dice
-        self.dice = dice
-
-    def __eq__(self, other):
-        if isinstance(other, SumDice):
-            return self.dice == other.dice
-        else:
-            return False
+    dice: list[Dice]
 
     def roll(self) -> int:
         return sum(d.roll() for d in self.dice)
@@ -119,19 +100,14 @@ class SimpleDie(Dice):
     def max_value(self) -> int:
         return self.num_sides
 
-
+@dataclass
 class MultipleRollDice(Dice):
-    def __init__(self, rolls, dice):
-        assert rolls >= 1
-        assert dice
-        self.rolls = rolls
-        self.dice = dice
+    rolls: int
+    dice: Dice
 
-    def __eq__(self, other):
-        if isinstance(other, MultipleRollDice):
-            return self.rolls == other.rolls and self.dice == other.dice
-        else:
-            return False
+    def __post_init__(self):
+        assert self.rolls >= 1
+        assert self.dice
 
     def roll(self) -> int:
         result = 0
