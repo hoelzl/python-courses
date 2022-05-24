@@ -9,9 +9,7 @@ from ..dice import (
     SumDice,
     SimpleDie,
     MultipleRollDice,
-    parse_single_die_configuration,
-    parse_configuration,
-    dice_from_specs,
+    create_single_die,
     create_dice,
 )
 
@@ -40,12 +38,16 @@ def test_fair_dice_max_value():
     dice = FairDice(2, 6)
     assert dice.max_value == 12
 
-@pytest.mark.parametrize("num_dice, sides, results", [
-    (1, 6, [5, 3, 4]),
-    (2, 6, [8, 9, 8]),
-    (2, 20, [28, 33, 29, 19, 25]),
-    (20, 2, [35, 29, 29, 33, 29])
-])
+
+@pytest.mark.parametrize(
+    "num_dice, sides, results",
+    [
+        (1, 6, [5, 3, 4]),
+        (2, 6, [8, 9, 8]),
+        (2, 20, [28, 33, 29, 19, 25]),
+        (20, 2, [35, 29, 29, 33, 29]),
+    ],
+)
 def test_fair_dice_roll(num_dice, sides, results):
     random.seed(2022)
     dice = FairDice(num_dice, sides)
@@ -109,25 +111,18 @@ def test_multiple_roll_dice_roll():
 
 # Pretty dubious...
 @pytest.mark.parametrize(
-    "class_, args",
+    "dice",
     [
-        (ConstantDice, (4,)),
-        (FairDice, (1, 6)),
-        (FairDice, (3, 4)),
-        (SumDice, ([FairDice(2, 4), ConstantDice(2)],)),
-        (SimpleDie, (6,)),
-        (
-            MultipleRollDice,
-            (
-                2,
-                SimpleDie(4),
-            ),
-        ),
+        ConstantDice(4),
+        FairDice(1, 6),
+        FairDice(3, 4),
+        SumDice([FairDice(2, 4), ConstantDice(2)]),
+        SimpleDie(6),
+        MultipleRollDice(2, SimpleDie(4)),
     ],
 )
-def test_roll_between_min_and_max(class_, args):
+def test_roll_between_min_and_max(dice):
     random.seed(101)
-    dice = class_(*args)
     assert dice.min_value <= dice.max_value
     num_iterations = 10 * (dice.max_value - dice.min_value + 1) ** 3
     # Initialize with values that are guaranteed to be improved when
@@ -149,35 +144,16 @@ def test_roll_between_min_and_max(class_, args):
 
 
 @pytest.mark.parametrize(
-    "configuration, spec",
+    "configuration, dice",
     [
-        ("2d6", (FairDice, (2, 6))),
-        ("3D8", (FairDice, (3, 8))),
-        ("d4", (FairDice, (1, 4))),
-        ("2", (ConstantDice, (2,))),
+        ("2d6", (FairDice(2, 6))),
+        ("3D8", (FairDice(3, 8))),
+        ("d4", (FairDice(1, 4))),
+        ("2", (ConstantDice(2,))),
     ],
 )
-def test_parse_single_die_configuration(configuration, spec):
-    assert parse_single_die_configuration(configuration) == spec
-
-
-def test_parse_configuration():
-    spec = parse_configuration("3d8 + d5 + 2")
-    assert spec == [(FairDice, (3, 8)), (FairDice, (1, 5)), (ConstantDice, (2,))]
-
-
-@pytest.mark.parametrize(
-    "specs, dice",
-    [
-        ([(FairDice, (3, 4))], FairDice(3, 4)),
-        (
-            [(FairDice, (2, 6)), (ConstantDice, (2,))],
-            SumDice([FairDice(2, 6), ConstantDice(2)]),
-        ),
-    ],
-)
-def test_dice_from_specs(specs, dice):
-    assert dice_from_specs(specs) == dice
+def test_parse_single_die_configuration(configuration, dice):
+    assert create_single_die(configuration) == dice
 
 
 @pytest.mark.parametrize(

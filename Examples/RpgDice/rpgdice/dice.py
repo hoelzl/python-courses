@@ -1,7 +1,7 @@
 import random
 import re
 from abc import ABC, abstractmethod
-from typing import Tuple, Callable, Iterable, Sequence, Union
+from typing import Iterable
 
 
 class Dice(ABC):
@@ -54,8 +54,7 @@ class FairDice(Dice):
 
     def __eq__(self, other):
         if isinstance(other, FairDice):
-            return (self.num_dice == other.num_dice
-                    and self.num_sides == other.num_sides)
+            return self.num_dice == other.num_dice and self.num_sides == other.num_sides
         else:
             return False
 
@@ -149,72 +148,36 @@ class MultipleRollDice(Dice):
         return self.rolls * self.dice.max_value
 
 
-"""\
-We call a string containing a description of the form 3d6 + 2
-a configuration.
-
-A dice spec is a tuple with the elements
-    - Function to construct a die matching the configuration
-    - A tuple containing the relevant parameters from the spec
-"""
-DiceSpec = Tuple[Callable, Union[Tuple[int], Tuple[int, int]]]
-
-DICE_REGEX = re.compile(r'^\s*(\d*)\s*([Dd]?)\s*(\d+)\s*$')
+DICE_REGEX = re.compile(r"^\s*(\d*)\s*([Dd]?)\s*(\d+)\s*$")
 
 
-def parse_single_die_configuration(configuration: str) -> DiceSpec:
+def create_single_die(configuration: str) -> Dice:
     """
-    Parse a single die configuration string into a dice spec.
+    Parse a single die configuration string into a die.
 
-    :param configuration: A string in the form '2d6 + 4'
+    :param configuration: A string in the form '2d6'
     :return: A Dice spec
     """
     match = DICE_REGEX.match(configuration)
     if match.group(2):
-        num_dice = int(match.group(1) or '1')
+        num_dice = int(match.group(1) or "1")
         num_sides = int(match.group(3))
-        return FairDice, (num_dice, num_sides)
+        return FairDice(num_dice, num_sides)
     else:
         value = int(match.group(3))
-        return ConstantDice, (value,)
-
-
-def parse_configuration(configuration: str) -> Sequence[DiceSpec]:
-    """
-    Parse a configuration string and return a sequence of dice specs.
-
-    :param configuration: A string in the form '2d6 + 4'
-    :return: A sequence of Dice specs
-    """
-    single_configs = configuration.split('+')
-    return list(map(parse_single_die_configuration, single_configs))
-
-
-def dice_from_single_spec(spec: DiceSpec) -> Dice:
-    """
-    Create a Dice instances, given a single dice spec.
-
-    :param spec: A dice spec in the form returned by parse_configuration
-    :return: A Dice instance
-    """
-    constructor, args = spec
-    return constructor(*args)
-
-
-def dice_from_specs(specs: Sequence[DiceSpec]) -> Dice:
-    """
-    Create a list of Die instances given a sequence of die specs.
-
-    :param specs: A list of die specs as returned by parse_configuration
-    :return: A list of dice
-    """
-    assert specs
-    if len(specs) == 1:
-        return dice_from_single_spec(specs[0])
-    else:
-        return SumDice(list(map(dice_from_single_spec, specs)))
+        return ConstantDice(value)
 
 
 def create_dice(configuration: str) -> Dice:
-    specs = parse_configuration(configuration)
-    return dice_from_specs(specs)
+    """
+    Create dice from a configuration string.
+
+    :param configuration: A string in the form '2d6 + 4'
+    :return: A dice corresponding to the configuration string.
+    """
+    single_configs = configuration.split("+")
+    dice = [create_single_die(config) for config in single_configs]
+    if len(dice) == 1:
+        return dice[0]
+    else:
+        return SumDice(dice)
