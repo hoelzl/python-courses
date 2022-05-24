@@ -1,30 +1,24 @@
 import json
 from collections import UserList
+from dataclasses import dataclass
 from typing import Collection
+
 from .formatter import format_answers, format_question
 
 
+@dataclass
 class Question:
+    text: str
+    answers: Collection[str]
+
     @classmethod
-    def from_dict(cls, init_dict):
-        return cls(text=init_dict["text"], answers=init_dict["answers"])
-
-    def __init__(self, text: str, answers: Collection[str]):
-        self.text = text
-        self.answers = answers
-
-    def __repr__(self):
-        return f"{type(self).__name__}({self.text!r}, {self.answers!r})"
+    def from_dict(cls, question_dict):
+        return cls(text=question_dict["text"], answers=question_dict["answers"])
 
     def __str__(self):
         question_block = "Question:\n" + format_question(self.text)
         answer_block = "Answers:\n" + format_answers(self.answers)
         return f"{question_block}\n{answer_block}\n"
-
-    def __eq__(self, other):
-        if isinstance(other, Question):
-            return self.text == other.text and self.answers == other.answers
-        return False
 
     def get_answer(self, n):
         if 1 <= n <= len(self.answers):
@@ -72,4 +66,3 @@ class Questionnaire(UserList):
             except Exception:
                 answers.append((-1, "Bad input."))
         return answers
-
