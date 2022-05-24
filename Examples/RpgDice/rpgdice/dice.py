@@ -1,8 +1,7 @@
 import random
 import re
 from abc import ABC, abstractmethod
-from typing import Iterable
-from dataclasses import dataclass
+from typing import Tuple, Callable, Iterable, Sequence, Union
 
 
 class Dice(ABC):
