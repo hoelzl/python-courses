@@ -1,9 +1,9 @@
 import pytest
 
-from othellite.board import Board, BoardReader
-from othellite.field import Field
-from othellite.player_color import PlayerColor
-from othellite.position import Position
+from ...board import Board, BoardReader
+from ...field import Field
+from ...player_color import PlayerColor
+from ...position import Position
 
 
 def setup_board_for_tests(board) -> None:

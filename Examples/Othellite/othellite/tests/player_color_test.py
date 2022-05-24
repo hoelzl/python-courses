@@ -1,5 +1,5 @@
-from othellite.field import Field
-from othellite.player_color import PlayerColor
+from ..field import Field
+from ..player_color import PlayerColor
 
 
 def test_player_value():
