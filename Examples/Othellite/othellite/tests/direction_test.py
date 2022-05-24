@@ -1,4 +1,4 @@
-from othellite.direction import Direction
+from ..direction import Direction
 
 
 def test_abbreviations():

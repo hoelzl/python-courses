@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
-from othellite.direction import Direction
-from othellite.position import Position
+from ..direction import Direction
+from ..position import Position
 
 
 def test_is_valid():

@@ -1,7 +1,7 @@
 import pytest
 
-from othellite.board import ListBoard
-from tests.board.board_test import BoardTests, BoardReaderTests, setup_board_for_tests
+from ...board import ListBoard
+from .board_test import BoardTests, BoardReaderTests, setup_board_for_tests
 
 
 @pytest.fixture
