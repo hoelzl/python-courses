@@ -14,6 +14,6 @@ middleware = full_middleware
 if __name__ == "__main__":
     print("Simple Message Queue V1")
     input_file_name = Path("messages.json")
-    with open(input_file_name, "r") as input_file:
+    with open(input_file_name, "r", encoding="utf-8") as input_file:
         msgs = json.load(input_file)
     process_messages(msgs, middleware)

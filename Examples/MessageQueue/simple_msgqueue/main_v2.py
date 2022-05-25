@@ -6,7 +6,9 @@ import typer
 from .utils.main_utils import configure_middleware
 from .core import process_messages
 
+app = typer.Typer(add_completion=False)
 
+@app.command()
 def main(
     messages: Path,
     auth: str = "",
@@ -27,4 +29,4 @@ def main(
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    app()
