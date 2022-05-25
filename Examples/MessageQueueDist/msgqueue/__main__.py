@@ -6,7 +6,7 @@ import typer
 from .utils.main_utils import configure_middleware
 from .core import process_messages
 
-app = typer.Typer()
+app = typer.Typer(add_completion=False)
 
 
 @app.command()
@@ -19,12 +19,9 @@ def main(
     timestamp: bool = typer.Option(False, help="add a timestamp to the messages"),
 ):
     """
-    Process messages in JSON format.\n
-    Now better and improved!!!
+    Process messages in JSON format.
     """
-    middleware = configure_middleware(
-        {"auth_token": auth, "log": log, "timestamp": timestamp}
-    )
+    middleware = configure_middleware(auth_token=auth, log=log, timestamp=timestamp)
     with messages.open(encoding="utf-8") as file:
         msgs = json.load(file)
     process_messages(msgs, middleware)

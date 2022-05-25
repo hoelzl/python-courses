@@ -1,26 +1,18 @@
-from argparse import Namespace
-
 from ..main_utils import configure_middleware
-from ...middleware.authenticate import Authenticator
 from ...middleware.log import log
 from ...middleware.timestamp import timestamp
 
 
-def create_namespace(log=False, auth=False, timestamp=False):
-    n = Namespace()
-    n.log = log
-    n.auth = auth
-    n.timestamp = timestamp
-    return n
+def make_dict(log=False, auth=False, timestamp=False):
+    return dict(log=log, auth=auth, timestamp=timestamp)
 
 
 def test_configure_middleware_without_args():
-    n = create_namespace()
-    middleware = configure_middleware(n)
+    middleware = configure_middleware(**make_dict())
     assert middleware == []
 
 
 def test_configure_middleware_with_log_and_timestamp():
-    n = create_namespace(log=True, timestamp=True)
-    middleware = configure_middleware(n)
+    d = make_dict(log=True, timestamp=True)
+    middleware = configure_middleware(**d)
     assert middleware == [log, timestamp]
