@@ -9,7 +9,9 @@ import typer
 from .utils.main_utils import configure_middleware
 from .core import process_messages
 
+app = typer.Typer(add_completion=False)
 
+@app.command()
 def main(
     messages: Path = typer.Argument(
         Path("messages.json"), help="a file with messages in json format"
@@ -30,4 +32,4 @@ def main(
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    app()
