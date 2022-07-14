@@ -1,7 +1,6 @@
-from collections import Mapping
 from dataclasses import dataclass
 from enum import Enum, auto
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, Mapping
 
 from .board import Board
 from .field import Field
