@@ -1,9 +1,9 @@
 from collections.abc import Mapping
 from collections import Counter
 
-from othellite.position import Position
-from othellite.field import Field
-from othellite.player_color import PlayerColor
+from ..position import Position
+from ..field import Field
+from ..player_color import PlayerColor
 from abc import ABC, abstractmethod
 from typing import overload, Iterable
 import re

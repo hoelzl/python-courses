@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from othellite.board import Board
-from othellite.field import Field
-from othellite.game_result import GameResult, WinReason
-from othellite.player import Player
-from othellite.position import Position
+from .board import Board
+from .field import Field
+from .game_result import GameResult, WinReason
+from .player import Player
+from .position import Position
 
 
 # noinspection PyMethodMayBeStatic
