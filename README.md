@@ -9,7 +9,7 @@ scripting language".
 Clone this repository with
 
 ```shell
-git clone --recursive https://github.com/hoelzl/python-programmierer.git
+git clone --recursive https://github.com/hoelzl/python-courses.git
 cd python-course
 ```
 

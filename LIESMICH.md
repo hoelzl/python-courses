@@ -8,7 +8,7 @@ Notebooks und Code für die Kurse "Einführung in Python", "Python für Programm
 Verwenden Sie bitte den Befehl
 
 ```shell
-git clone --recursive https://github.com/hoelzl/python-programmierer.git
+git clone --recursive https://github.com/hoelzl/python-courses.git
 cd python-course
 ```
 
