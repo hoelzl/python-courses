@@ -8,7 +8,7 @@ channels:
   - defaults
 dependencies:
   - python[version='>=3.9']
-  - cuda
+  - cudatoolkit=11.6
   - cudnn
   - autopep8
   - black
@@ -35,7 +35,7 @@ dependencies:
   - pytest
   - pytest-cov
   - python-build
-  - pytorch
+  - pytorch[version='>=1.12']
   - requests
   - rise
   - scikit-build
