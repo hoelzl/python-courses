@@ -12,7 +12,6 @@ dependencies:
   - mypy
   - jinja2
   - jupyter
-  - jupyter_contrib_nbextensions
   - jupytext
   - matplotlib
   - numba

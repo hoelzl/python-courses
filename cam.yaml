@@ -8,7 +8,7 @@ channels:
   - defaults
 dependencies:
   - python[version='>=3.9']
-  - cudatoolkit=11.6
+  - cuda
   - cudnn
   - autopep8
   - black
@@ -21,7 +21,6 @@ dependencies:
   - mypy
   - jinja2
   - jupyter
-  - jupyter_contrib_nbextensions
   - jupytext
   - matplotlib
   - nbex
@@ -35,7 +34,7 @@ dependencies:
   - pytest
   - pytest-cov
   - python-build
-  - pytorch[version='>=1.12']
+  - pytorch
   - requests
   - rise
   - scikit-build
@@ -46,6 +45,8 @@ dependencies:
   - spacy[version='>=3']
   - statsmodels
   - streamlit
+  - tensorboard
+  - tensorflow
   - transformers[version='>=3']
   - typer
   - uvicorn
