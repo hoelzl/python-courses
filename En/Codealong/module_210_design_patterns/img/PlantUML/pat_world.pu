@@ -1,0 +1,10 @@
+@startuml
+class UWorld {
+  {static} -world: UWorld
+  -AudioDeviceHandle: uint32
+  -...
+  {static} +GetWorld(): UWorld
+  +AddPawn(APawn* Pawn)
+  +...()
+}
+@enduml

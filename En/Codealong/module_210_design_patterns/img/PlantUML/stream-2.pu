@@ -1,0 +1,21 @@
+@startuml
+abstract class Stream {
+  open()
+  close()
+  write(text: String)
+}
+
+class OpenStream {
+  open()
+  close()
+  write(text: String)
+}
+class ClosedStream {
+  open()
+  close()
+  write(text: String)
+}
+
+Stream <|-- OpenStream
+Stream <|-- ClosedStream
+@enduml

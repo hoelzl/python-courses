@@ -1,0 +1,12 @@
+@startuml
+abstract class APickup {
+  Mesh: UMesh
+  WasCollected(ACharacter* Collector)
+  {abstract} PerformPickupAction(ACharacter* Collector)
+}
+class APowerChangingPickup {
+  Power: float
+  PerformPickupAction(ACharacter* Collector)
+}
+APickup <|-- APowerChangingPickup
+@enduml

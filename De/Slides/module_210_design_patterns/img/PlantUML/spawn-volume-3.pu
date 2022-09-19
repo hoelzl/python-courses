@@ -1,0 +1,14 @@
+@startuml
+class ASpawnVolume {
+  BeginPlay()
+  CreatedType: UClass*
+  SpawnPickup(): APickup*
+}
+
+note bottom of ASpawnVolume
+  APickup* ASpawnVolume::SpawnPickup() {
+      APickup* P { NewObject<APickup>(this, CreatedType) };
+      // Place P into the level and return it
+  }
+end note
+@enduml

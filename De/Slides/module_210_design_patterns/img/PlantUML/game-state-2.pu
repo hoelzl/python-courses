@@ -1,0 +1,11 @@
+@startuml
+state SelectionMode
+state PGGameMode {
+  Unknown --> Playing
+  Playing --> Won
+  Playing --> GameOver
+}
+[*] -> SelectionMode
+SelectionMode -> PGGameMode
+PGGameMode -> [*]
+@enduml

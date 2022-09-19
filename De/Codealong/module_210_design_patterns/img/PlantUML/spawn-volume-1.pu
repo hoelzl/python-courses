@@ -1,0 +1,25 @@
+@startuml
+class ASpawnVolume {
+  BeginPlay()
+  {abstract} SpawnPickup(): APickup*
+}
+note right of ASpawnVolume
+  BeginPlay() sets up
+  a timer that
+  periodically calls
+  SpawnPickup()
+end note
+
+class ABatterySpawnVolume {
+  SpawnPickup(): APickup*
+}
+note bottom: Spawn ABatteryPickups
+
+class AEnergyDrainSpawnVolume {
+  SpawnPickup(): APickup*
+}
+note bottom: Spawn AEnergyDrainingPickups
+
+ASpawnVolume <|-- ABatterySpawnVolume
+ASpawnVolume <|-- AEnergyDrainSpawnVolume
+@enduml

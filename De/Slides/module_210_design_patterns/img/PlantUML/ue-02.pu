@@ -1,0 +1,9 @@
+@startuml
+class UObject
+class AActor
+class APawn
+class ACharacter
+UObject <|- AActor
+AActor <|- APawn
+APawn <|- ACharacter
+@enduml

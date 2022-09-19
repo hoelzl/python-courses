@@ -1,0 +1,34 @@
+@startuml
+abstract class UPickupFactory {
+  {abstract} SpawnPickup(): APickup*
+}
+
+class USinglePickupTypeFactory {
+  CreatedType: TSubclassOf<APickup>
+  SpawnPickup(): APickup*
+}
+
+class UTwoPickupTypesFactory {
+  CreatedType1: TSubclassOf<APickup>
+  Type1Probability: float
+  CreatedType2: TSubclassOf<APickup>
+  SpawnPickup(): APickup*
+}
+
+UPickupFactory <|-- USinglePickupTypeFactory
+UPickupFactory <|-- UTwoPickupTypesFactory
+
+class ASpawnVolume {
+  BeginPlay()
+  SpawnPickup(): APickup*
+}
+
+note top of ASpawnVolume
+  Pickup* ASpawnVolume::SpawnPickup() {
+      ...
+      return { PickupFactory->SpawnPickup();
+  }
+end note
+
+UPickupFactory - ASpawnVolume
+@enduml

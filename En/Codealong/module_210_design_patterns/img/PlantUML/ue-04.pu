@@ -1,0 +1,17 @@
+@startuml
+class UWorld
+class UObject
+class UGameInstance
+class AActor
+class AInfo
+class AGameMode
+class AGameState
+class APlayerState
+UWorld -|> UObject
+UObject <|- AActor
+UObject <|-- UGameInstance
+AActor <|- AInfo
+AInfo <|-- AGameMode
+AInfo <|-- AGameState
+AInfo <|- APlayerState
+@enduml

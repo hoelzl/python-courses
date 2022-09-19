@@ -1,0 +1,5 @@
+@startuml
+[*] -> SelectionMode
+SelectionMode -> PGGameMode
+PGGameMode -> [*]
+@enduml

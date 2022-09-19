@@ -1,0 +1,11 @@
+@startuml
+hide footbox
+A -> B: createRequest()
+activate B
+B -> C: DoWork()
+activate C
+C --> B: WorkDone
+destroy C
+B --> A: RequestCreated
+deactivate B
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+autonumber
+Alice -> Bob: Authentifikationsanfrage
+Bob --> Alice: Authentikationsantwort
+Alice -> Alice: Nachricht an "Self"
+Alice -> Bob: Authentifikationsanfrage
+Bob --> Alice: Authentikationsantwort
+@enduml

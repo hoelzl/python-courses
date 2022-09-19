@@ -1,0 +1,35 @@
+@startuml
+class Stream {
+  open()
+  close()
+  write(text: String)
+}
+
+note bottom of Stream
+open() {
+  streamState.open();
+}
+end note
+
+abstract class StreamState {
+  open() {abstract}
+  close() {abstract}
+  write(text: String) {abstract}
+}
+
+Stream o-> StreamState
+
+class OpenStreamState {
+  open()
+  close()
+  write(text: String)
+}
+class ClosedStreamState {
+  open()
+  close()
+  write(text: String)
+}
+
+StreamState <|-- OpenStreamState
+StreamState <|-- ClosedStreamState
+@enduml

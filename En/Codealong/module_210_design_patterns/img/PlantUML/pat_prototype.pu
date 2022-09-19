@@ -1,0 +1,30 @@
+@startuml
+abstract class Client {
+  Operation()
+}
+
+note bottom of Client
+Operation() {
+  ...
+  P = Prototype->Clone();
+  ...
+}
+end note
+
+abstract class Prototype {
+  {abstract} Clone(): Prototype
+}
+
+class ConcretePrototype1 {
+  Clone(): Prototype
+}
+
+class ConcretePrototype2 {
+  Clone(): Prototype
+}
+
+Prototype <|-- ConcretePrototype1
+Prototype <|-- ConcretePrototype2
+
+Client -> Prototype
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class ASpawnVolume {
+  BeginPlay()
+  CreatedType: String
+  SpawnPickup(): APickup*
+}
+
+note left of ASpawnVolume
+  APickup* ASpawnVolume::SpawnPickup() {
+      APickup* P;
+      if (CreatedType == "Battery")
+      {
+          P = new ABatteryPickup();
+      }
+      else
+      {
+          P = new AEnergyDrainingPickup();
+      }
+      // Place P into the level and return it
+  }
+end note
+@enduml

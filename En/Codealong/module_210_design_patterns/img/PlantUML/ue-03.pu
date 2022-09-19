@@ -1,0 +1,9 @@
+@startuml
+class AActor
+class AController
+class APlayerController
+class AAIController
+AActor <|-- AController
+AController <|-- APlayerController
+AController <|-- AAIController
+@enduml

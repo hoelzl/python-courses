@@ -1,0 +1,15 @@
+@startuml
+class ASpawnVolume {
+  BeginPlay()
+  CreatedType: TSubclassOf<APickup>
+  SpawnPickup(): APickup*
+}
+
+note bottom of ASpawnVolume
+  APickup* ASpawnVolume::SpawnPickup() {
+      ...
+      APickup* P { SpawnActor<APickup>(CreatedType, ...) };
+      return P;
+  }
+end note
+@enduml

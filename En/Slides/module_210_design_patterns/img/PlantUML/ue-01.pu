@@ -1,0 +1,16 @@
+@startuml
+class UObject
+class AActor
+class AController
+class APlayerController
+class AAIController
+class APawn
+class ACharacter
+UObject <|- AActor
+AActor <|- APawn
+APawn <|- ACharacter
+UObject <|-- UWorld
+AActor <|-- AController
+AController <|-- APlayerController
+AController <|-- AAIController
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+abstract class UPickupFactory {
+  {abstract} SpawnPickup(): APickup*
+}
+
+class USinglePickupTypeFactory {
+  CreatedType: TSubclassOf<APickup>
+  SpawnPickup(): APickup*
+}
+
+class UPrototypePickupFactory {
+  Prototype: APickup*
+  SpawnPickup(): APickup*
+}
+
+note bottom of UPrototypePickupFactory
+  APickup* UPrototypePickupFactory::SpawnPickup()
+  {
+      APickup* P { Prototype->Clone() };
+      // Place P into the level and return it
+  }
+end note
+
+UPickupFactory <|-- USinglePickupTypeFactory
+UPickupFactory <|-- UPrototypePickupFactory
+
+abstract class APickup {
+  {abstract} Clone()
+}
+
+class ABatteryPickup {
+  Clone()
+}
+
+class AEnergyDrainPickup {
+  Clone()
+}
+
+APickup <- UPrototypePickupFactory
+
+APickup <|-- ABatteryPickup
+APickup <|-- AEnergyDrainPickup
+@enduml

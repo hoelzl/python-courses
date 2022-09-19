@@ -1,0 +1,16 @@
+@startuml
+class Client
+abstract class Handler {
+  handleRequest(): bool {abstract}
+}
+class ConcreteHandler1 {
+  handleRequet(): bool
+}
+class ConcreteHandler2 {
+  handleRequet(): bool
+}
+
+Client -> "*" Handler
+Handler <|-- ConcreteHandler1
+Handler <|-- ConcreteHandler2
+@enduml

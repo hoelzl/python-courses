@@ -1,0 +1,6 @@
+@startuml
+class Controller -> Mesh
+Controller --> Actor
+Actor --> Mesh
+Mesh ..> Actor
+@enduml
