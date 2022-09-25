@@ -3,22 +3,27 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python[version='>=3.9']
+  - python[version='>=3.10']
   - autopep8
+  - bandit
   - black
   - cookiecutter
+  - flake8
+  - hypothesis
   - ipykernel
   - ipywidgets
   - mypy
   - jinja2
   - jupyter
   - jupytext
+  - lark
   - matplotlib
   - numba
   - numpy
   - openpyxl
   - pandas
   - papermill
+  - pdoc
   - pip
   - pyarrow
   - pytest

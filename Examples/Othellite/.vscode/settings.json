@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "Dataclasses",
+        "ndarray",
+        "othellite",
+        "pyproject",
+        "Reversi",
+        "setuptools"
+    ],
+    "python.testing.pytestArgs": [],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
