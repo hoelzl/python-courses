@@ -28,6 +28,11 @@ def interact():
         time.sleep(1)
         print("done.")
         raise typer.Exit(code=0)
+    elif command == "work slowly":
+        print("Working...", end="")
+        time.sleep(10)
+        print("done.")
+        raise typer.Exit(code=0)
     else:
         print(
             f"ERROR: Illegal command {command!r}!",
@@ -36,13 +41,15 @@ def interact():
         )
         raise typer.Exit(code=2)
 
+
 class UppercaseHandler(StreamRequestHandler):
     def handle(self):
         self.data = self.rfile.readline().strip()
         self.wfile.write(self.data.upper())
 
+
 @app.command()
-def serve(host:str="localhost", port:int=12345):
+def serve(host: str = "localhost", port: int = 12345):
     with TCPServer((host, port), UppercaseHandler) as server:
         server.serve_forever()
 
