@@ -48,7 +48,7 @@ def test_next_in_direction_for_lower_right_corner():
 
 def test_next_in_direction_for_invalid_position():
     with pytest.raises(ValueError):
-        Position(8, 7).next_in_direction(Direction.SE) == Position(9, 8)  # type: ignore
+        Position(8, 7).next_in_direction(Direction.SE) == Position(9, 8)
 
 
 def test_to_linear_index():

@@ -1,0 +1,31 @@
+name: py37
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - autopep8
+  - bandit
+  - black
+  - cookiecutter
+  - flake8
+  - hypothesis
+  - ipykernel
+  - ipywidgets
+  - mypy
+  - jinja2
+  - jupyter
+  - jupytext
+  - lark
+  - matplotlib
+  - numpy
+  - pandas
+  - pip
+  - pytest
+  - python-build
+  - requests
+  - rise
+  - scikit-build
+  - scikit-learn
+  - scipy
+  - typer
