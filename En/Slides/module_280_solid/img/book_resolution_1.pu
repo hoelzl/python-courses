@@ -1,0 +1,40 @@
+@startuml book_resolution_1
+
+class Book {
+    -title: str
+    -author: str
+    -pages: int
+    +print(): None
+    +save(): None
+}
+
+note right of Book::print
+    Delegate to
+    BookDao.save()
+end note
+
+note left of Book::save
+    Delegate to
+    BookPrinter.print()
+end note
+
+interface BookDao {
+    +save(book: Book): None
+}
+
+class SqlBookDao {}
+
+BookDao <|-- SqlBookDao
+
+interface BookPrinter {
+    +print(book: Book): None
+}
+
+class ColorBookPrinter {}
+
+BookPrinter <|-- ColorBookPrinter
+
+Book --> BookDao
+Book --> BookPrinter
+
+@enduml

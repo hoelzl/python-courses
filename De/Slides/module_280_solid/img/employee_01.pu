@@ -1,0 +1,35 @@
+@startuml employee_01
+
+enum EmployeeType {
+    REGULAR
+    HOURED
+    COMMISIONED
+}
+
+class Project {
+    name: str
+    assets: float
+}
+
+class Employee {
+    id: int
+    name: str
+    salary: float
+    overtime: int
+    calculate_pay(): float
+    report_hours(): int
+    print_report(): None
+    save_employee(): None
+}
+
+class AugurDatabase {
+    start_transaction(): None
+    commit_transaction(): None
+    rollback_transaction(): None
+    store_field(obj_id: int, name: str, value): None
+}
+
+Employee --> EmployeeType
+Employee -> Project
+Employee --> AugurDatabase
+@enduml

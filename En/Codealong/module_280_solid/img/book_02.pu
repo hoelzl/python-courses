@@ -1,0 +1,19 @@
+@startuml book_02
+
+class Book {
+    -title: str
+    -author: str
+    -pages: int
+    +print(): None
+    +save(): None
+}
+
+note right of Book::print
+    To a printer
+end note
+
+note right of Book::save
+    To a database
+end note
+
+@enduml

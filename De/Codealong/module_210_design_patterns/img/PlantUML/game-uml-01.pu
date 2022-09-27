@@ -1,5 +1,7 @@
-@startuml
-class Controller -> Mesh
+@startuml game-uml-01
+
+class Controller{}
+Controller -> Mesh
 Controller --> Actor
 Actor --> Mesh
 Mesh ..> Actor

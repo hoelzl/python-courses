@@ -1,0 +1,11 @@
+@startuml book_01
+
+class Book {
+    -title: str
+    -author: str
+    -pages: int
+    +print(): None
+    +save(): None
+}
+
+@enduml
