@@ -1,7 +1,10 @@
-import typer
+import os
 import sys
 import time
+from pprint import pprint
 from socketserver import StreamRequestHandler, TCPServer
+
+import typer
 
 app = typer.Typer(add_completion=False)
 
@@ -40,6 +43,11 @@ def interact():
             flush=True,
         )
         raise typer.Exit(code=2)
+
+
+@app.command()
+def print_env():
+    pprint(os.environ.__dict__["_data"])
 
 
 class UppercaseHandler(StreamRequestHandler):
