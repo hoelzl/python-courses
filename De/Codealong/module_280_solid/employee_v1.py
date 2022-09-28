@@ -38,6 +38,20 @@ class ReportPrinter:
 
 # %%
 @dataclass
+class EmployeeDao:
+    database: AugurDatabase
+
+    def save_employee(self, employee: "EmployeeV1") -> None:
+        self.database.start_transaction()
+        self.database.store_field(employee.id, "name", employee.name)
+        self.database.store_field(employee.id, "salary", employee.salary)
+        self.database.store_field(employee.id, "overtime", employee.overtime)
+        self.database.store_field(employee.id, "employee_type", employee.employee_type)
+        self.database.store_field(employee.id, "project", employee.project)
+        self.database.commit_transaction()
+
+# %%
+@dataclass
 class EmployeeV1:
     id: int
     name: str
@@ -45,10 +59,10 @@ class EmployeeV1:
     overtime: int
     employee_type: EmployeeType
     project: Project
-    database: AugurDatabase
+    payment_calculator: PaymentCalculator
     hour_reporter: HourReporter
     report_printer: ReportPrinter
-    payment_calculator: PaymentCalculator
+    dao: EmployeeDao
 
     def calculate_pay(self):
         return self.payment_calculator.calculate_pay(self)
@@ -59,11 +73,5 @@ class EmployeeV1:
     def print_report(self):
         return self.report_printer.print_report(self)
 
-    def save_employee(self) -> None:
-        self.database.start_transaction()
-        self.database.store_field(self.id, "name", self.name)
-        self.database.store_field(self.id, "salary", self.salary)
-        self.database.store_field(self.id, "overtime", self.overtime)
-        self.database.store_field(self.id, "employee_type", self.employee_type)
-        self.database.store_field(self.id, "project", self.project)
-        self.database.commit_transaction()
+    def save_employee(self):
+        return self.dao.save_employee(self)
