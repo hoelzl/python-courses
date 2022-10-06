@@ -13,6 +13,8 @@ dependencies:
   - autopep8
   - bandit
   - black
+  - bump2version
+  - click
   - cookiecutter
   - datasets
   - fastai
@@ -53,6 +55,7 @@ dependencies:
   - streamlit
   - tensorboard
   - tensorflow
+  - tox
   - transformers[version='>=3']
   - typer
   - uvicorn
