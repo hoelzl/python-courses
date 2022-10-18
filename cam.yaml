@@ -13,10 +13,13 @@ dependencies:
   - autopep8
   - bandit
   - black
+  - bump2version
+  - click
   - cookiecutter
   - datasets
   - fastai
   - fastapi
+  - ffmpeg
   - flake8
   - hypothesis
   - ipykernel
@@ -53,6 +56,7 @@ dependencies:
   - streamlit
   - tensorboard
   - tensorflow
+  - tox
   - transformers[version='>=3']
   - typer
   - uvicorn

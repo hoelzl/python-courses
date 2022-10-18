@@ -7,6 +7,8 @@ dependencies:
   - autopep8
   - bandit
   - black
+  - bump2version
+  - click
   - cookiecutter
   - flake8
   - hypothesis
@@ -35,5 +37,6 @@ dependencies:
   - scikit-learn
   - scipy
   - seaborn
+  - tox
   - typer
   - uvicorn
