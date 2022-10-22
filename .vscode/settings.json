@@ -1,0 +1,38 @@
+{
+    "cSpell.words": [
+        "anzahl",
+        "arange",
+        "argmax",
+        "argmin",
+        "aufteilung",
+        "ausgabe",
+        "begrüßung",
+        "dtype",
+        "dublonen",
+        "eigenvals",
+        "eigenvecs",
+        "ergebnis",
+        "farben",
+        "Golddublone",
+        "Golddublonen",
+        "hauptstr",
+        "hersteller",
+        "kapitän",
+        "länge",
+        "linalg",
+        "linspace",
+        "mult",
+        "pirat",
+        "piraten",
+        "produkt",
+        "produkte",
+        "pythagoras",
+        "scipy",
+        "stringliste"
+    ],
+    "python.analysis.inlayHints.functionReturnTypes": false,
+    "python.analysis.inlayHints.variableTypes": false,
+    "python.analysis.diagnosticSeverityOverrides": {
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/Examples"
+}
